@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Joevin & Shiney 💛</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&family=Noto+Sans+Tamil:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --rose:#f2a7b0; --cream:#fff8f0; --gold:#d4956a; --deep:#7a3b3b; }
+    html, body { min-height:100%; background:var(--cream); font-family:'Cormorant Garamond',serif; overflow-x:hidden; }
+    body::before {
+      content:''; position:fixed; inset:0; z-index:0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%,#ffe4ec88 0%,transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 90%,#ffd6b888 0%,transparent 60%),
+        radial-gradient(ellipse 50% 50% at 50% 50%,#fff0e8 0%,var(--cream) 100%);
+    }
+    .petals { position:fixed; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
+    .petal { position:absolute; top:-40px; font-size:1.2rem; opacity:0; animation:fall linear infinite; }
+    @keyframes fall {
+      0%   { transform:translateY(0) rotate(0deg) scale(1); opacity:0; }
+      10%  { opacity:0.7; }
+      90%  { opacity:0.5; }
+      100% { transform:translateY(105vh) rotate(720deg) scale(0.6); opacity:0; }
+    }
+    .page { position:relative; z-index:2; min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:60px 20px 80px; gap:48px; }
+    header { text-align:center; animation:fadeUp .9s ease both; }
+    .date-badge { display:inline-block; font-size:.85rem; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); border:1px solid #d4956a55; padding:5px 18px; border-radius:99px; margin-bottom:18px; background:#fff8f0cc; }
+    .names { font-family:'Great Vibes',cursive; font-size:clamp(3rem,9vw,5.5rem); color:var(--deep); line-height:1.1; text-shadow:0 2px 18px #f2a7b055; }
+    .ampersand { color:var(--gold); }
+    .tagline { margin-top:10px; font-style:italic; font-size:1.05rem; color:#a06060; letter-spacing:.05em; }
+    .divider { display:flex; align-items:center; gap:14px; width:100%; max-width:480px; animation:fadeUp .9s .2s ease both; }
+    .divider::before,.divider::after { content:''; flex:1; height:1px; background:linear-gradient(to right,transparent,#d4956a88,transparent); }
+    .divider span { color:var(--rose); font-size:1.1rem; }
+    .note-card { max-width:560px; width:100%; background:linear-gradient(135deg,#fff5f7,#fff8f0); border:1px solid #f2c4c4; border-radius:24px; padding:36px 40px; text-align:center; box-shadow:0 8px 48px #f2a7b022,0 2px 8px #d4956a11; position:relative; overflow:hidden; animation:fadeUp .9s .3s ease both; }
+    .note-card::before { content:'❝'; position:absolute; top:12px; left:20px; font-size:5rem; color:#f2a7b022; font-family:Georgia,serif; line-height:1; }
+    .note-tamil { font-family:'Noto Sans Tamil',sans-serif; font-size:clamp(.95rem,2.5vw,1.1rem); color:var(--deep); line-height:2; font-weight:300; }
+    .note-footer { margin-top:20px; font-family:'Great Vibes',cursive; font-size:1.6rem; color:var(--gold); }
+    .music-section { width:100%; max-width:600px; animation:fadeUp .9s .5s ease both; }
+    .section-label { text-align:center; font-size:.8rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+
+    /* Thumbnail player */
+    .player-wrap {
+      display:block; border-radius:20px; overflow:hidden;
+      box-shadow:0 12px 48px #f2a7b033,0 2px 12px #d4956a22;
+      border:1px solid #f2c4c4; aspect-ratio:16/9;
+      position:relative; background:#1a0808;
+      text-decoration:none; cursor:pointer;
+    }
+    .player-wrap img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease,opacity .3s; }
+    .player-wrap:hover img { transform:scale(1.04); opacity:.75; }
+    .play-overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; }
+    .play-circle {
+      width:72px; height:72px; border-radius:50%;
+      background:#fff8f0ee; border:2px solid #f2c4c4;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 6px 32px #f2a7b077;
+      transition:transform .25s,box-shadow .25s;
+    }
+    .player-wrap:hover .play-circle { transform:scale(1.14); box-shadow:0 10px 48px #f2a7b0bb; }
+    .play-circle svg { width:28px; height:28px; fill:var(--deep); margin-left:5px; }
+    .play-label { font-size:.82rem; letter-spacing:.22em; text-transform:uppercase; color:#fff8f0; text-shadow:0 1px 10px #0009; opacity:0; transform:translateY(6px); transition:opacity .25s,transform .25s; }
+    .player-wrap:hover .play-label { opacity:1; transform:translateY(0); }
+
+    footer { text-align:center; color:#c08080; font-size:.85rem; font-style:italic; animation:fadeUp .9s .7s ease both; }
+    footer .hearts { color:var(--rose); letter-spacing:.2em; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+  </style>
+</head>
+<body>
+  <div class="petals" id="petals"></div>
+  <div class="page">
+
+    <header>
+      <div class="date-badge">✦ Since Dec 31 ✦</div>
+      <div class="names">Joevin <span class="ampersand">&</span> Shiney</div>
+      <div class="tagline">a little corner of the internet, just for us</div>
+    </header>
+
+    <div class="divider"><span>♡</span></div>
+
+    <div class="note-card">
+      <p class="note-tamil">
+        நீ என் வாழ்க்கையில் வந்த பிறகு,<br>
+        ஒவ்வொரு நாளும் ஒரு சிறிய அதிசயமாக மாறிவிட்டது.<br><br>
+        உன்னுடன் இருக்கும் ஒவ்வொரு நொடியும்<br>
+        என் இதயத்திற்கு அமைதியும் மகிழ்ச்சியும் தருகிறது.<br><br>
+        நான் உன்னை மிகவும் காதலிக்கிறேன்.
+      </p>
+      <div class="note-footer">— Joevin 💛</div>
+    </div>
+
+    <div class="divider"><span>♡</span></div>
+
+    <!-- ✏️ TO CHANGE SONG DAILY: replace "r5qAbExIh3w" with the new YouTube video ID (appears 3 times below) -->
+    <div class="music-section">
+      <div class="section-label">♪ &nbsp; our love song of the day &nbsp; ♪</div>
+
+      <a class="player-wrap"
+         href="https://www.youtube.com/watch?v=r5qAbExIh3w"
+         target="_blank"
+         rel="noopener noreferrer">
+        <img
+          src="https://img.youtube.com/vi/r5qAbExIh3w/maxresdefault.jpg"
+          alt="Our love song of the day"
+          onerror="this.src='https://img.youtube.com/vi/r5qAbExIh3w/hqdefault.jpg'"
+        />
+        <div class="play-overlay">
+          <div class="play-circle">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="play-label">♪ &nbsp; play on youtube &nbsp; ♪</span>
+        </div>
+      </a>
+    </div>
+
+    <footer>
+      <div class="hearts">♡ &nbsp; ♡ &nbsp; ♡</div>
+      <div style="margin-top:8px">made with love · forever & always</div>
+    </footer>
+
+  </div>
+
+  <script>
+    const container = document.getElementById('petals');
+    const symbols = ['🌸','🌷','💛','✿','❀','♡','🌼'];
+    for (let i = 0; i < 28; i++) {
+      const p = document.createElement('span');
+      p.className = 'petal';
+      p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.fontSize = (.6 + Math.random() * .9) + 'rem';
+      p.style.animationDuration = (8 + Math.random() * 12) + 's';
+      p.style.animationDelay = (Math.random() * 14) + 's';
+      container.appendChild(p);
+    }
+  </script>
+</body>
+</html>
